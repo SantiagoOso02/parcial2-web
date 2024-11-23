@@ -10,14 +10,14 @@ import {
 
 @Entity('paciente')
 export class PacienteEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
   @Column()
   nombre: string;
 
   @Column()
   genero: string;
+
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @ManyToMany(() => MedicoEntity, (medico) => medico.pacientes)
   @JoinTable()

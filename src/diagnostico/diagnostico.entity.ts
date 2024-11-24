@@ -12,8 +12,6 @@ export class DiagnosticoEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToMany(() => PacienteEntity, (paciente) => paciente.diagnosticos, {
-    nullable: true,
-  })
+  @ManyToMany(() => PacienteEntity, (paciente) => paciente.diagnosticos)
   pacientes: PacienteEntity[];
 }

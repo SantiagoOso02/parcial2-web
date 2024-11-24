@@ -17,7 +17,7 @@ export class DiagnosticoService {
   async create(diagnostico: DiagnosticoEntity): Promise<DiagnosticoEntity> {
     if (diagnostico.descripcion.length > 200)
       throw new BusinessLogicException(
-        'The diagnostic prediction is longer than 200 characters.',
+        'The diagnosis description is longer than 200 characters.',
         BusinessError.PRECONDITION_FAILED,
       );
     return await this.diagnosticoRepository.save(diagnostico);
@@ -31,7 +31,7 @@ export class DiagnosticoService {
       });
     if (!diagnostico)
       throw new BusinessLogicException(
-        'The diagnostic with the given id was not found',
+        'The diagnosis with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 
@@ -47,7 +47,7 @@ export class DiagnosticoService {
       await this.diagnosticoRepository.findOne({ where: { id } });
     if (!diagnostico)
       throw new BusinessLogicException(
-        'The diagnostic with the given id was not found',
+        'The diagnosis with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 

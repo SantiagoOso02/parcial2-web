@@ -19,11 +19,15 @@ export class PacienteEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToMany(() => MedicoEntity, (medico) => medico.pacientes)
+  @ManyToMany(() => MedicoEntity, (medico) => medico.pacientes, {
+    nullable: true,
+  })
   @JoinTable()
   medicos: MedicoEntity[];
 
-  @ManyToMany(() => DiagnosticoEntity, (diagnostico) => diagnostico.pacientes)
+  @ManyToMany(() => DiagnosticoEntity, (diagnostico) => diagnostico.pacientes, {
+    nullable: true,
+  })
   @JoinTable()
   diagnosticos: DiagnosticoEntity[];
 }

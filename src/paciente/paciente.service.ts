@@ -14,6 +14,7 @@ export class PacienteService {
     private readonly pacienteRepository: Repository<PacienteEntity>,
   ) {}
 
+  //Pruebas completadas
   async create(paciente: PacienteEntity): Promise<PacienteEntity> {
     if (paciente.nombre.length < 3)
       throw new BusinessLogicException(
@@ -23,6 +24,7 @@ export class PacienteService {
     return await this.pacienteRepository.save(paciente);
   }
 
+  //Pruebas completadas
   async findOne(id: string): Promise<PacienteEntity> {
     const paciente: PacienteEntity = await this.pacienteRepository.findOne({
       where: { id },
@@ -33,16 +35,17 @@ export class PacienteService {
         'The patient with the given id was not found',
         BusinessError.NOT_FOUND,
       );
-
     return paciente;
   }
 
+  //Pruebas completadas
   async findAll(): Promise<PacienteEntity[]> {
     return await this.pacienteRepository.find({
       relations: ['diagnosticos', 'medicos'],
     });
   }
 
+  //Pruebas por completar
   async delete(id: string) {
     const paciente: PacienteEntity = await this.pacienteRepository.findOne({
       where: { id },
@@ -59,6 +62,7 @@ export class PacienteService {
         'The patient has one or more diagnostics, deletion is not allowed.',
         BusinessError.PRECONDITION_FAILED,
       );
+
     await this.pacienteRepository.remove(paciente);
   }
 }
